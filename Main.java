@@ -21,7 +21,7 @@ public class Main {
         (userChoice.equals("scissors") && computerChoiceString.equals("paper")) ||
         (userChoice.equals("paper") && computerChoiceString.equals("rock"))
       ) {
-        System.out.println("You win! GG cc");
+        System.out.println("You win! GG");
       } else {
         System.out.println("The computer wins.");
       }
