@@ -16,12 +16,13 @@ public class Main {
       // Compare the user's choice to the computer s choice to determine the winner
       if (userChoice.equals(computerChoiceString)) {
         System.out.println("It's a tie!");
+        main(args);
       } else if (
-        (userChoice.equals("rock") && computerChoiceString.equals("scissors")) ||
-        (userChoice.equals("scissors") && computerChoiceString.equals("paper")) ||
-        (userChoice.equals("paper") && computerChoiceString.equals("rock"))
+        (userChoice.equals("rock") || userChoice.equals("pierre") && computerChoiceString.equals("scissors")) ||
+        (userChoice.equals("scissors") || userChoice.equals("ciseaux") && computerChoiceString.equals("paper")) ||
+        (userChoice.equals("paper") || userChoice.equals("papier") || userChoice.equals("feuille") && computerChoiceString.equals("rock"))
       ) {
-        System.out.println("You win! GG cc");
+        System.out.println("You win! GG");
       } else {
         System.out.println("The computer wins.");
       }
