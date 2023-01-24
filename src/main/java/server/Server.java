@@ -9,6 +9,7 @@ import common.Message;
 public class Server {
 	private int port;
 	private List<ConnectedClient> clients;
+	private List<ConnectedClient> playingClients;
 	private List<ConnectedClient> waitingClients;
 
 
@@ -56,9 +57,14 @@ public class Server {
 		broadcastMessage(new Message(Integer.toString(newClient.getId()), " connecté"), newClient.getId());
 	}
 	
+	public void addPlayingClient(ConnectedClient newClient) {
+		this.playingClients.add(newClient);
+		broadcastMessage(new Message(Integer.toString(newClient.getId()), " entrain de jouer"), newClient.getId());
+	}
+	
 	public void addWaitingClients(ConnectedClient newClient) {
 		this.waitingClients.add(newClient);
-		broadcastMessage(new Message(Integer.toString(newClient.getId()), " connecté"), newClient.getId());
+		broadcastMessage(new Message(Integer.toString(newClient.getId()), " entrain d'attendre"), newClient.getId());
 	}
 
 	public void broadcastMessage(Message mess, int id) {
@@ -71,7 +77,7 @@ public class Server {
 	}
 	
 	public void sendMessageToId(Message mess, int idUser) {
-		ConnectedClient client = waitingClients.get(idUser);
+		ConnectedClient client = clients.get(idUser);
 		client.sendMessage(mess);
 	}
 
