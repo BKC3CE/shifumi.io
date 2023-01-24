@@ -71,7 +71,7 @@ public class Server {
 	}
 	
 	public void sendMessageToId(Message mess, int idUser) {
-		ConnectedClient client = clients.get(idUser);
+		ConnectedClient client = waitingClients.get(idUser);
 		client.sendMessage(mess);
 	}
 
