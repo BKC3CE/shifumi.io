@@ -1,11 +1,11 @@
 package server;
 
+import common.Message;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-
-import common.Message;
 
 public class ConnectedClient implements Runnable {
 	private static int idCounter;
@@ -104,7 +104,6 @@ public class ConnectedClient implements Runnable {
 					mess = (Message) in.readObject();
 					
 					if (mess != null) {
-						mess.setSender(String.valueOf(id));
 						server.broadcastMessage(mess, id);
 						System.out.println(mess);
 					} else {
