@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import common.Message;
+
 public class Connection implements Runnable{
 	private Server server;
 	private ServerSocket serverSocket;
@@ -12,7 +14,7 @@ public class Connection implements Runnable{
 		super();
 		this.server = server;
 		try {
-			this.serverSocket = new ServerSocket(this.server.getPort());
+			this.serverSocket = new ServerSocket(this.server.getPort(), 2);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -26,9 +28,15 @@ public class Connection implements Runnable{
 				Socket sockNewClient = serverSocket.accept();
 				
 				ConnectedClient newClient = new ConnectedClient(server, sockNewClient);
-				newClient.setId(server.getNumClients()) ;
+				newClient.setId(server.getNumClients());
 				
-				server.addClient(newClient);
+				if(server.getClients().size() < 2) {
+					server.addClient(newClient);					
+				}
+				else {
+					server.addWaitingClients(newClient);
+					server.sendMessageToId(new Message("Trop de joueurs connectés..."), newClient.getId());
+				}
 				
 				Thread threadNewClient = new Thread(newClient);
 				threadNewClient.start();
