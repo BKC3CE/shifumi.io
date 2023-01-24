@@ -30,7 +30,7 @@ public class Connection implements Runnable{
 				ConnectedClient newClient = new ConnectedClient(server, sockNewClient);
 				newClient.setId(server.getNumClients());
 				
-				if(server.getClients().size() < 2) {
+				if(server.getClients().size() <= 2) {
 					server.addClient(newClient);	
 					server.addPlayingClient(newClient);	
 				}

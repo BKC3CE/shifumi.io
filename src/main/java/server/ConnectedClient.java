@@ -105,7 +105,7 @@ public class ConnectedClient implements Runnable {
 					
 					if (mess != null) {
 						mess.setSender(String.valueOf(id));
-						server.broadcastMessage(mess, id);
+						server.messageToPlayers(mess, id, false);
 						System.out.println(mess);
 					} else {
 						server.disconnectedClient(this);
