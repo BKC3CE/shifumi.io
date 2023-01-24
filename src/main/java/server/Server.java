@@ -25,6 +25,14 @@ public class Server {
 		this.port = port;
 	}
 	
+	public List<ConnectedClient> getPlayingClients() {
+		return playingClients;
+	}
+
+	public void setPlayingClients(List<ConnectedClient> clients) {
+		this.playingClients = clients;
+	}
+	
 	public List<ConnectedClient> getWaitingClients() {
 		return waitingClients;
 	}
