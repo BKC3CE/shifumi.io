@@ -41,8 +41,14 @@ public class Server {
 	}
 
 	public void addClient(ConnectedClient newClient) {
-		this.clients.add(newClient);
-		broadcastMessage(new Message(Integer.toString(newClient.getId()), " connected"), newClient.getId());
+		if(this.clients.size() < 8) {
+			this.clients.add(newClient);
+			broadcastMessage(new Message(Integer.toString(newClient.getId()), " connected", 0), newClient.getId());
+		}
+		else {
+			//"File d'attente..."
+		}
+		
 	}
 
 	public void broadcastMessage(Message mess, int id) {
@@ -57,7 +63,7 @@ public class Server {
 	public void disconnectedClient(ConnectedClient connectedClient) {
 		connectedClient.closeClient();
 		clients.remove(connectedClient);
-		broadcastMessage(new Message(Integer.toString(connectedClient.getId()), " disconnected"), connectedClient.getId());
+		broadcastMessage(new Message(Integer.toString(connectedClient.getId()), " disconnected", 0), connectedClient.getId());
 
 	}
 
