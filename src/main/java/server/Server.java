@@ -77,6 +77,19 @@ public class Server {
 
 	}
 	
+	public void messageToPlayers(Message mess, int id, boolean sendBoth) {
+		for (ConnectedClient client : playingClients) {
+			if(!sendBoth) {
+				if (client.getId() != id) {
+					client.sendMessage(mess);
+				}
+			}
+			else {
+				client.sendMessage(mess);
+			}
+		}
+	}
+	
 	public void sendMessageToId(Message mess, int idUser) {
 		ConnectedClient client = clients.get(idUser);
 		client.sendMessage(mess);
