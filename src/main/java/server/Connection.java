@@ -31,9 +31,11 @@ public class Connection implements Runnable{
 				newClient.setId(server.getNumClients());
 				
 				if(server.getClients().size() < 2) {
-					server.addClient(newClient);					
+					server.addClient(newClient);	
+					server.addPlayingClient(newClient);	
 				}
 				else {
+					server.addClient(newClient);
 					server.addWaitingClients(newClient);
 					server.sendMessageToId(new Message("Trop de joueurs connectés..."), newClient.getId());
 				}
