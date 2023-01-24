@@ -9,11 +9,11 @@ import java.net.Socket;
 
 public class Client {
 
-	private final String pseudo;
+	private static String pseudo = null;
 	private String address;
 	private int port;
 
-	public String getPseudo() {
+	public static String getPseudo() {
 		return pseudo;
 	}
 
