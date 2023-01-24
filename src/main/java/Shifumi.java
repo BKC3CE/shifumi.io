@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
-public class Main {
+public class Shifumi {
   public static void main(String[] args) {
-    try (Scanner scanner = new Scanner(System.in)) {
+    try (Scanner scanner = new Scanner(System.in)){
       // Ask the user to choose rock, paper, or scissors
       System.out.println("Choose rock, paper, or scissors:");
       String userChoice = scanner.nextLine();
@@ -18,10 +18,10 @@ public class Main {
         System.out.println("It's a tie!");
         main(args);
       } else if (
-        (userChoice.equals("rock") || userChoice.equals("pierre") && computerChoiceString.equals("scissors")) ||
-        (userChoice.equals("scissors") || userChoice.equals("ciseaux") && computerChoiceString.equals("paper")) ||
-        (userChoice.equals("paper") || userChoice.equals("papier") || userChoice.equals("feuille") && computerChoiceString.equals("rock"))
-      ) {
+        (userChoice.equals("rock") && computerChoiceString.equals("scissors")) ||
+        (userChoice.equals("scissors") && computerChoiceString.equals("paper")) ||
+        (userChoice.equals("paper") && computerChoiceString.equals("rock")))
+      {
         System.out.println("You win! GG");
       } else {
         System.out.println("The computer wins.");
