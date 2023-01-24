@@ -37,6 +37,7 @@ public class Server {
 		super();
 		this.port = port;
 		this.clients = new ArrayList<ConnectedClient>();
+		this.playingClients = new ArrayList<ConnectedClient>();		
 		this.waitingClients = new ArrayList<ConnectedClient>();
 
 		Thread threadConnection = new Thread(new Connection(this));
