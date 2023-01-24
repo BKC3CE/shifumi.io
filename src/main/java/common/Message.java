@@ -5,10 +5,9 @@ import java.io.Serializable;
 public class Message implements Serializable {
 	private String sender;
 	private String content;
-	// shifumi = 0 : pas de jeu
-	// shifumi = 1 : pierre
-	// shifumi = 2 : feuille
-	// shifumi = 3 : ciseau
+	// shifumi = 0 : pierre
+	// shifumi = 1 : feuille
+	// shifumi = 2 : ciseau
 	private int shifumi;
 	
 	public Message(String content) {
@@ -29,7 +28,7 @@ public class Message implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Sender:" + sender + ", says:" + content + "]";
+		return sender + " dit:" + content + "]";
 	}
 
 	public String getSender() {
